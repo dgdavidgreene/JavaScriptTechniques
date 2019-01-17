@@ -1,0 +1,10 @@
+
+Function.prototype.memoize = function() {
+    var self = this
+    return function () {
+        var args =
+Array.prototype.slice.call(arguments)
+        self.cache = self.cache || {};
+        return self.cache[args] ? self.cache[args] : (self.cache[args] = self(args))
+    }
+}
